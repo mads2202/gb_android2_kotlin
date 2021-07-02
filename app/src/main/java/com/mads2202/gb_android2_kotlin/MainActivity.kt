@@ -1,5 +1,8 @@
 package com.mads2202.gb_android2_kotlin
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,9 +16,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-            //тренировка дз4
-        fun View.createAndShow(text: String, actionText: String, action: (View) -> Unit, length: Int = Snackbar.LENGTH_INDEFINITE) {
-            Snackbar.make(this, text, length).setAction(actionText, action).show()}
+        val receiver=object:BroadcastReceiver(){
+            override fun onReceive(context: Context?, intent: Intent?) {
+                println("FROM SERVICE:" +
+                        " ${intent?.getBooleanExtra(MainService.INTENT_NAME,
+                            false)}")
+            }
+        }
+
+        supportFragmentManager.beginTransaction().add(R.id.container,MovieListFragment()).commit()
 
 
     }

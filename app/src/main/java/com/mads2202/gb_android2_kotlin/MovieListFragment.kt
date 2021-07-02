@@ -17,13 +17,9 @@ class MovieListFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view=inflater.inflate(R.layout.list_fragment,container,false)
-        val  recyclerView=view.findViewById<RecyclerView>(R.id.movie_recycler_view)
-        recyclerView.layoutManager=LinearLayoutManager(requireContext())
-        recyclerView.adapter=MovieAdapter(arrayListOf(movie1, movie2, movie3))
-        val  recyclerView1=view.findViewById<RecyclerView>(R.id.upcoming_movie_recycler_view)
-        recyclerView1.layoutManager=LinearLayoutManager(requireContext())
-        recyclerView1.adapter=MovieAdapter()
+        val view=inflater.inflate(R.layout.single_movie_view_fragment,container,false)
+        return view
+
 
     }
 }
